@@ -1,146 +1,119 @@
 :root {
---primary-color: #002855;
---accent-color: #d90429;
---text-color: #222;
---bg-color: #fff;
---font-body: "Poppins", sans-serif;
---transition-speed: 0.3s;
+  --primary-color: #002855;
+  --accent-color: #d90429;
+  --text-color: #222;
+  --bg-color: #fff;
+  --font-body: "Poppins", sans-serif;
 }
 
 body {
-font-family: var(--font-body);
-background: var(--bg-color);
-color: var(--text-color);
-margin: 0;
-padding: 0;
-overflow-x: hidden;
-transition: background var(--transition-speed), color var(--transition-speed);
+  font-family: var(--font-body);
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
 }
 
-header img {
-width: 100%;
-display: block;
-transition: transform var(--transition-speed);
-}
-
-header img:hover {
-transform: scale(1.02);
+.site-header img {
+  width: 100%;
+  display: block;
 }
 
 .main-nav ul {
-list-style: none;
-margin: 0;
-padding: 0;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-background: var(--primary-color);
-transition: background var(--transition-speed);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: var(--primary-color);
 }
 
 .main-nav a {
-color: #fff;
-text-decoration: none;
-padding: 1em;
-display: block;
-transition: color var(--transition-speed), background var(--transition-speed);
-}
-
-.main-nav a:hover {
-color: var(--accent-color);
-background: rgba(255,255,255,0.1);
-transform: scale(1.05);
+  color: #fff;
+  text-decoration: none;
+  padding: 1em;
+  display: block;
 }
 
 .hero {
-text-align: center;
-padding: 2em;
-background: #f8f9fa;
-opacity: 0;
-animation: fadeIn 1s forwards;
-}
-
-.hero h1 {
-font-size: 2.5em;
-margin-bottom: 0.5em;
-transition: transform var(--transition-speed);
-}
-
-.hero p {
-font-size: 1.2em;
-transition: transform var(--transition-speed);
-}
-
-.hero:hover h1,
-.hero:hover p {
-transform: translateY(-5px);
+  text-align: center;
+  padding: 2em;
+  background: #f8f9fa;
 }
 
 .inventory {
-padding: 2em;
-text-align: center;
-opacity: 0;
-animation: fadeIn 1.2s forwards;
+  padding: 2em;
+  text-align: center;
 }
 
 .car-grid {
-display: grid;
-grid-template-columns: 1fr;
-gap: 1.5em;
-}
-
-.car {
-border-radius: 0.5em;
-overflow: hidden;
-box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-opacity: 0;
-animation: fadeInUp 1s forwards;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
 }
 
 .car img {
-width: 100%;
-display: block;
-transition: transform var(--transition-speed);
-}
-
-.car:hover {
-transform: translateY(-5px);
-box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.car img:hover {
-transform: scale(1.05);
+  width: 100%;
+  border-radius: 0.5em;
 }
 
 /* Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 2.5s ease forwards;
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 1.5s ease forwards;
+}
+
+.slide-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideLeft 1.5s ease forwards;
+}
+
+.slide-right {
+  opacity: 0;
+  transform: translateX(20px);
+  animation: slideRight 1.5s ease forwards;
+}
+
 @keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
+  to { opacity: 1; }
 }
 
-@keyframes fadeInUp {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
+@keyframes slideUp {
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
+@keyframes slideLeft {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive layout */
 @media screen and (min-width: 768px) {
-.car-grid {
-grid-template-columns: repeat(2, 1fr);
-}
+  .car-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-nav ul {
-justify-content: flex-end;
-}
+  nav ul {
+    justify-content: flex-end;
+  }
 
-.hero {
-padding: 4em;
-}
-}
-
-@media screen and (min-width: 1024px) {
-.car-grid {
-grid-template-columns: repeat(3, 1fr);
-}
+  .hero {
+    padding: 4em;
+  }
 }

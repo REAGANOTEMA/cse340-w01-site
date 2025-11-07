@@ -2,24 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CSE Motors</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title || "CSE Motors" %></title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <header>
-    <h1>CSE Motors</h1>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/inventory">Inventory</a>
-    </nav>
-  </header>
+  <%- include('header') %> <!-- Include header/nav -->
 
   <main>
-    <%- body %>
+    <%- body %> <!-- Page-specific content -->
   </main>
 
-  <footer>
-    <p>&copy; 2025 CSE Motors. All rights reserved.</p>
-  </footer>
+  <%- include('footer') %> <!-- Include footer -->
 </body>
 </html>
