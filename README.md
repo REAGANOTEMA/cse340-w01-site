@@ -1,47 +1,111 @@
 ## Getting Started
 
-This document is intended to get you started quickly in building a backend driven Node.js application complete with pages and content, backend logic and a PostgreSQL database for data storage.
+This guide will help you quickly get up and running with your Node.js backend application, complete with pages, backend logic, and a PostgreSQL database.
+
+---
+
 ## Prerequisites
 
-The only prerequisite software required to have installed at this point is Git for version control and a code editor - we will use VS Code (VSC).
+Before starting, ensure you have the following installed on your machine:
+
+- **Git** (for version control)
+- **VS Code** (or your preferred code editor)
+
+---
 
 ## Package Management
 
-The foundation of the project development software is Node. While functional, Node depends on "packages" to add functionality to accomplish common tasks. This requires a package manager. Three common managers are NPM (Node Package Manager), YARN, and PNPM. While all do the same thing, they do it slightly differently. We will use PNPM for two reasons: 1) All packages are stored on your computer only once and then symlinks (system links) are created from the package to the project as needed, 2) performance is increased meaning that when the project builds, it does so faster.
-You will need to either install or activate PNPM before using it. See https://pnpm.io/
+Node.js projects use packages to add functionality. To manage these packages, we use a **package manager**. Common options are:
 
-## Install the Project Dependencies
+- NPM (Node Package Manager)
+- Yarn
+- PNPM
 
-1. Open the downloaded project folder (where this file is located) in VS Code (VSC).
-2. Open the VSC terminal: Terminal > New Window.
-3. Run the following command in the terminal:
+We use **PNPM** because:
 
-    pnpm install
+1. Packages are stored locally once and linked to multiple projects, saving space.
+2. It improves performance during project builds.
 
-4. The first time it may take a few minutes, depending on the speed of your computer and the speed of your Internet connection. This command will instruct PNPM to read the package.json file and download and install the dependencies (packages) needed for the project. It will build a "node_modules" folder storing each dependency and its dependencies. It should also create a pnpm-lock.yaml file. This file should NEVER be altered by you. It is an internal file (think of it as an inventory) that PNPM uses to keep track of everything in the project.
+> Install or activate PNPM if you haven’t already: [https://pnpm.io/](https://pnpm.io/)
+
+---
+
+## Install Project Dependencies
+
+1. Open the project folder in VS Code.
+2. Open a terminal in VS Code (`Terminal > New Terminal` or `Ctrl + ``).
+3. Run the following command:
+
+```bash
+pnpm install
+```
+
+- This will read the `package.json` file and install all required dependencies.
+- A `node_modules` folder will be created to store the packages.
+- A `pnpm-lock.yaml` file will also be created. **Do not modify this file manually.**
+
+---
 
 ## Start the Express Server
 
-With the packages installed you're ready to run the initial test.
-1. If the VSC terminal is still open use it. If it is closed, open it again using the same command as before.
-2. Type the following command, then press Enter:
+1. Ensure your terminal is open in the project folder.
+2. Run the development server:
 
-    pnpm run dev
+```bash
+pnpm run dev
+```
 
-3. If the command works, you should see the message "app listening on localhost:5500" in the console.
-4. Open the package.json file.
-5. Note the "Scripts" area? There is a line with the name of "dev", which tells the nodemon package to run the server.js file.
-6. This is the command you just ran.
-7. Open the server.js file.
-8. Near the bottom you'll see two variables "Port" and "Host". The values for the variables are stored in the .env file.
-9. These variables are used when the server starts on your local machine.
+3. If successful, you should see a message similar to:
 
-## Move the demo file
+```
+Server running at http://localhost:5500
+```
 
-When you installed Git and cloned the remote repository in week 1, you should have created a simple web page.
-1. Find and move that simple web page to the public folder. Be sure to note its name.
-## Test in a browser
+4. Open `package.json` and notice the `"scripts"` section. The `"dev"` script runs `nodemon server.js`, which is what you just executed.
 
-1. Go to http://localhost:5500 in a browser tab. Nothing should be visible as the server has not been setup to repond to that route.
-2. Add "/filename.html" to the end of the URL (replacing filename with the name of the file you moved to the public folder).
-3. You should see that page in the browser.
+5. Open `server.js` and note the `Port` and `Host` variables near the bottom. These values are stored in the `.env` file and determine where your server listens locally.
+
+---
+
+## Move Your Demo File
+
+If you have a simple HTML page from earlier:
+
+1. Move it to the `public` folder in your project.
+2. Make note of the filename for testing.
+
+---
+
+## Test in a Browser
+
+1. Ensure the server is running (`pnpm run dev`).
+2. Open a browser and navigate to:
+
+```
+http://localhost:5500
+```
+
+3. To view your HTML file, append its name to the URL:
+
+```
+http://localhost:5500/yourfile.html
+```
+
+You should see your page load successfully.
+
+---
+
+### Notes
+
+- All static files (HTML, CSS, images) should reside in the `public` folder.
+- The `.env` file should never be committed to GitHub—it contains sensitive information.
+- If you encounter a "port already in use" error, check which process is using the port and stop it, e.g., using:
+
+```powershell
+netstat -ano | findstr :5500
+taskkill /PID <PID> /F
+```
+
+---
+
+This README is ready to be pushed to GitHub and will provide clear setup instructions for anyone cloning your repository.

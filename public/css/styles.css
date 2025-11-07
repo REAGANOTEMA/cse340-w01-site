@@ -1,6 +1,74 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+:root {
+  --primary-color: #002855;
+  --accent-color: #d90429;
+  --text-color: #222;
+  --bg-color: #fff;
+  --font-body: "Poppins", sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+header img {
+  width: 100%;
+  display: block;
+}
+
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: var(--primary-color);
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 1em;
+  display: block;
+}
+
+.hero {
+  text-align: center;
+  padding: 2em;
+  background: #f8f9fa;
+}
+
+.inventory {
+  padding: 2em;
+  text-align: center;
+}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+}
+
+.car img {
+  width: 100%;
+  border-radius: 0.5em;
+}
+
+/* Large screen layout */
+@media screen and (min-width: 768px) {
+  .car-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  nav ul {
+    justify-content: flex-end;
+  }
+
+  .hero {
+    padding: 4em;
+  }
 }
