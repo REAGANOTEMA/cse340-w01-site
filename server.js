@@ -5,21 +5,21 @@ const expressLayouts = require("express-ejs-layouts");
 
 const app = express();
 
-// EJS setup
+// --- EJS setup ---
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Express EJS Layouts
+// --- Express EJS Layouts ---
 app.use(expressLayouts);
-app.set("layout", "layout"); // default layout file
+app.set("layout", "layout"); // default layout file (layout.ejs in views)
 
-// Static files
+// --- Static files ---
 app.use(express.static(path.join(__dirname, "public")));
 
-// Routes
+// --- Routes ---
 app.use("/", indexRouter);
 
-// Dynamic port for Render
+// --- Dynamic port for Render or fallback ---
 const PORT = process.env.PORT || 5500;
 const HOST = "0.0.0.0";
 
